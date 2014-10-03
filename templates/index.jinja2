@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Dragon RPG Helper Tool">
   <meta name="author" content="Maximiliano Guerra de Medeiros">
+  <!-- <meta http-equiv="refresh" content="10"/> -->
 
   <link href="static/css/bootstrap.css" rel="stylesheet">
   <style type="text/css">
@@ -114,101 +115,101 @@
     </div>
     <hr />
     <div class="row">
-      <div class="span2" style="border: 1px solid gray; padding: 10px">
+      <div class="span2" style="border: 1px solid gray; padding: 10px" data-player='caio'>
         Caio <br />
-        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['caio']['hp']}}">
+        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['caio']['max_hp']}}">
         <input type="text" class="hp_change input-mini" placeholder="(+/-)">
         <div class="progress hp">
-          <div class="hp_bar bar bar-success" style="width: 100%;">
-            <span class="current-hp"></span> / <span class="total-hp">{{players['caio']['hp']}}</span>
+          <div class="hp_bar bar bar-success" style="width: {{(players['caio']['current_hp'] / players['caio']['max_hp']) * 100}}%;">
+            <span class="current-hp">{{players['caio']['current_hp']}}</span> / <span class="total-hp">{{players['caio']['max_hp']}}</span>
           </div>
         </div>
-        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['caio']['pf']}}">
+        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['caio']['max_pf']}}">
         <input type="text" class="pf_change input-mini" placeholder="(+/-)">
         <div class="progress pf">
-          <div class="pf_bar bar bar-warning" style="width: 100%;">
-            <span class="current-pf"></span> / <span class="total-pf">{{players['caio']['pf']}}</span>
+          <div class="pf_bar bar bar-warning" style="width: {{(players['caio']['current_pf'] / players['caio']['max_pf']) * 100}}%;">
+            <span class="current-pf">{{players['caio']['current_pf']}}</span> / <span class="total-pf">{{players['caio']['max_pf']}}</span>
           </div>
         </div>
-        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['caio']['pm']}}">
+        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['caio']['max_pm']}}">
         <input type="text" class="mp_change input-mini" placeholder="(+/-)">
         <div class="progress mp">
-          <div class="mp_bar bar" style="width: 100%;">
-            <span class="current-mp"></span> / <span class="total-mp">{{players['caio']['pm']}}</span>
+          <div class="mp_bar bar" style="width: {{(players['caio']['current_pm'] / players['caio']['max_pm']) * 100}}%;">
+            <span class="current-mp">{{players['caio']['current_pm']}}</span> / <span class="total-mp">{{players['caio']['max_pm']}}</span>
           </div>
         </div>
       </div>
 
-      <div class="span2" style="border: 1px solid gray; padding: 10px">
+      <div class="span2" style="border: 1px solid gray; padding: 10px" data-player='elder'>
         Elder <br />
-        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['elder']['hp']}}">
+        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['elder']['max_hp']}}">
         <input type="text" class="hp_change input-mini" placeholder="(+/-)">
         <div class="progress hp">
-          <div class="hp_bar bar bar-success" style="width: 100%;">
-            <span class="current-hp"></span> / <span class="total-hp">{{players['elder']['hp']}}</span>
+          <div class="hp_bar bar bar-success" style="width: {{(players['elder']['current_hp'] / players['elder']['max_hp']) * 100}}%;">
+            <span class="current-hp">{{players['elder']['current_hp']}}</span> / <span class="total-hp">{{players['elder']['max_hp']}}</span>
           </div>
         </div>
-        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['elder']['pf']}}">
+        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['elder']['max_pf']}}">
         <input type="text" class="pf_change input-mini" placeholder="(+/-)">
         <div class="progress pf">
-          <div class="pf_bar bar bar-warning" style="width: 100%;">
-            <span class="current-pf"></span> / <span class="total-pf">{{players['elder']['pf']}}</span>
+          <div class="pf_bar bar bar-warning" style="width: {{(players['elder']['current_pf'] / players['elder']['max_pf']) * 100}}%;">
+            <span class="current-pf">{{players['elder']['current_pf']}}</span> / <span class="total-pf">{{players['elder']['max_pf']}}</span>
           </div>
         </div>
-        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['elder']['pm']}}">
+        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['elder']['max_pm']}}">
         <input type="text" class="mp_change input-mini" placeholder="(+/-)">
         <div class="progress mp">
-          <div class="mp_bar bar" style="width: 100%;">
-            <span class="current-mp"></span> / <span class="total-mp">{{players['elder']['pm']}}</span>
+          <div class="mp_bar bar" style="width: {{(players['elder']['current_pm'] / players['elder']['max_pm']) * 100}}%;">
+            <span class="current-mp">{{players['elder']['current_pm']}}</span> / <span class="total-mp">{{players['elder']['max_pm']}}</span>
           </div>
         </div>
       </div>
 
-      <div class="span2" style="border: 1px solid gray; padding: 10px">
+      <div class="span2" style="border: 1px solid gray; padding: 10px" data-player='max'>
         Max <br />
-        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['max']['hp']}}">
+        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['max']['max_hp']}}">
         <input type="text" class="hp_change input-mini" placeholder="(+/-)">
         <div class="progress hp">
-          <div class="hp_bar bar bar-success" style="width: 100%;">
-            <span class="current-hp"></span> / <span class="total-hp">{{players['max']['hp']}}</span>
+          <div class="hp_bar bar bar-success" style="width: {{(players['max']['current_hp'] / players['max']['max_hp']) * 100}}%;">
+            <span class="current-hp">{{players['max']['current_hp']}}</span> / <span class="total-hp">{{players['max']['max_hp']}}</span>
           </div>
         </div>
-        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['max']['pf']}}">
+        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['max']['max_pf']}}">
         <input type="text" class="pf_change input-mini" placeholder="(+/-)">
         <div class="progress pf">
-          <div class="pf_bar bar bar-warning" style="width: 100%;">
-            <span class="current-pf"></span> / <span class="total-pf">{{players['max']['pf']}}</span>
+          <div class="pf_bar bar bar-warning" style="width: {{(players['max']['current_pf'] / players['max']['max_pf']) * 100}}%;">
+            <span class="current-pf">{{players['max']['current_pf']}}</span> / <span class="total-pf">{{players['max']['max_pf']}}</span>
           </div>
         </div>
-        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['max']['pm']}}">
+        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['max']['max_pm']}}">
         <input type="text" class="mp_change input-mini" placeholder="(+/-)">
         <div class="progress mp">
-          <div class="mp_bar bar" style="width: 100%;">
-            <span class="current-mp"></span> / <span class="total-mp">{{players['max']['pm']}}</span>
+          <div class="mp_bar bar" style="width: {{(players['max']['current_pm'] / players['max']['max_pm']) * 100}}%;">
+            <span class="current-mp">{{players['max']['current_pm']}}</span> / <span class="total-mp">{{players['max']['max_pm']}}</span>
           </div>
         </div>
       </div>
-      <div class="span2" style="border: 1px solid gray; padding: 10px">
+      <div class="span2" style="border: 1px solid gray; padding: 10px" data-player='studart'>
         Studart <br />
-        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['studart']['hp']}}">
+        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['studart']['max_hp']}}">
         <input type="text" class="hp_change input-mini" placeholder="(+/-)">
         <div class="progress hp">
-          <div class="hp_bar bar bar-success" style="width: 100%;">
-            <span class="current-hp"></span> / <span class="total-hp">{{players['studart']['hp']}}</span>
+          <div class="hp_bar bar bar-success" style="width: {{(players['studart']['current_hp'] / players['studart']['max_hp']) * 100}}%;">
+            <span class="current-hp">{{players['studart']['current_hp']}}</span> / <span class="total-hp">{{players['studart']['max_hp']}}</span>
           </div>
         </div>
-        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['studart']['pf']}}">
+        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['studart']['max_pf']}}">
         <input type="text" class="pf_change input-mini" placeholder="(+/-)">
         <div class="progress pf">
-          <div class="pf_bar bar bar-warning" style="width: 100%;">
-            <span class="current-pf"></span> / <span class="total-pf">{{players['studart']['pf']}}</span>
+          <div class="pf_bar bar bar-warning" style="width: {{(players['studart']['current_pf'] / players['studart']['max_pf']) * 100}}%;">
+            <span class="current-pf">{{players['studart']['max_pf']}}</span> / <span class="total-pf">{{players['studart']['max_pf']}}</span>
           </div>
         </div>
-        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['studart']['pm']}}">
+        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['studart']['max_pm']}}">
         <input type="text" class="mp_change input-mini" placeholder="(+/-)">
         <div class="progress mp">
-          <div class="mp_bar bar" style="width: 100%;">
-            <span class="current-mp"></span> / <span class="total-mp">{{players['studart']['pm']}}</span>
+          <div class="mp_bar bar" style="width: {{(players['studart']['current_pm'] / players['studart']['max_pm']) * 100}}%;">
+            <span class="current-mp">{{players['studart']['max_pm']}}</span> / <span class="total-mp">{{players['studart']['max_pm']}}</span>
           </div>
         </div>
       </div>
@@ -258,6 +259,7 @@
           parent.find(".hp_bar").addClass("bar-success");
         }
         parent.find(".hp_bar").css("width", percent + "%");
+        $.post('update_hp', {player: parent.attr('data-player'), value: newHp});
       });
 
       $(".total_pf").change(function(event) {
@@ -283,6 +285,7 @@
 
         var percent = ((newPf / totalPf) * 100).toFixed(0);
         parent.find(".pf_bar").css("width", percent + "%");
+        $.post('update_pf', {player: parent.attr('data-player'), value: newPf});
       });
 
       $(".total_mp").change(function(event) {
@@ -308,8 +311,8 @@
 
         var percent = ((newPm / totalPm) * 100).toFixed(0);
         parent.find(".mp_bar").css("width", percent + "%");
+        $.post('update_pm', {player: parent.attr('data-player'), value: newPm});
       });
-
 
     });
   </script>
