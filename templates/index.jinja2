@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dragon System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dragon RPG Helper Tool">
+  <meta name="author" content="Maximiliano Guerra de Medeiros">
+
+  <link href="static/css/bootstrap.css" rel="stylesheet">
+  <style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+
+  .bs-docs {
+    position: relative;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  </style>
+  <link href="static/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">Dragon System</a>
+        <!-- <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="span4">
+        <form class="bs-docs" id="double-dice-roller">
+          <fieldset>
+            <legend>Rolador de dados (dois dados)</legend>
+            <button type="submit" class="btn btn-info input-block-level" style="margin-bottom: 10px">Rolar!</button>
+            <hr />
+            <div id="double-dice-result" class="text-center hide">
+              <span class="label label-info">Resultados:</span>
+              <span class="badge badge-info" data-id="result-one"></span>
+              <span class="badge badge-info" data-id="result-two"></span><br />
+              <span class="label label-info">Maior:</span>
+              <span class="badge badge-info" data-id="results-biggest"></span>
+
+              <span class="label label-important hide" data-id="critical-label">Critico!!!</span>
+            </div>
+          </fieldset>
+        </form>
+        <form class="bs-docs" id="dice-roller">
+          <fieldset>
+            <legend>Rolador de dados (um dado)</legend>
+            <button type="submit" class="btn btn-info input-block-level" style="margin-bottom: 10px">Rolar!</button>
+            <hr />
+            <div id="dice-result" class="text-center hide">
+              <span class="label label-info">Resultado:</span>
+              <span class="badge badge-info" data-id="result"></span>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="span4">
+        <form class="bs-docs" id="accuracy">
+          <fieldset>
+            <legend>Acerto</legend>
+            <label>Ataque</label>
+            <div class="row-fluid">
+              <input name="ofensive" type="text" class="span8" placeholder="Ex: Destreza + Bonus da Arma" /> + <input name="modifier" type="text" class="span3" placeholder="Bonus" />
+            </div>
+            <label>Defesa</label>
+            <input name="defensive" type="text" class="input-block-level" placeholder="Ex: Defesa + Bonus arma ou Esquiva" />
+            <button type="submit" class="btn btn-info input-block-level" style="margin-bottom: 10px">Calcular</button>
+            <div class="text-center hide" data-id="result-block">
+              <span class="label" data-id="result-label">Passou!</span> <span class="badge" data-id="result-value"></span><br />
+              <span class="label" data-id="bonus-label">Bonus:</span> <span class="badge" data-id="bonus-value"></span>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="span4">
+        <form class="bs-docs" id="damage">
+          <fieldset>
+            <legend>Dano</legend>
+            <label>Ataque</label>
+            <div class="row-fluid">
+              <input name="ofensive" type="text" class="span8" placeholder="Ex: Destreza + Bonus da Arma" /> + <input name="modifier" type="text" class="span3" placeholder="Bonus" />
+            </div>
+            <label>Defesa</label>
+            <input name="defensive" type="text" class="input-block-level" placeholder="Ex: Defesa + Bonus arma ou Esquiva" />
+            <button type="submit" class="btn btn-info input-block-level" style="margin-bottom: 10px">Calcular</button>
+            <div class="text-center hide" data-id="result-block">
+              <span class="label" data-id="result-label"></span> <span class="badge" data-id="result-value"></span><br />
+              <span class="label" data-id="bonus-label">Bonus:</span> <span class="badge" data-id="bonus-value"></span>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="span2" style="border: 1px solid gray; padding: 10px">
+        Caio <br />
+        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['caio']['hp']}}">
+        <input type="text" class="hp_change input-mini" placeholder="(+/-)">
+        <div class="progress hp">
+          <div class="hp_bar bar bar-success" style="width: 100%;">
+            <span class="current-hp"></span> / <span class="total-hp">{{players['caio']['hp']}}</span>
+          </div>
+        </div>
+        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['caio']['pf']}}">
+        <input type="text" class="pf_change input-mini" placeholder="(+/-)">
+        <div class="progress pf">
+          <div class="pf_bar bar bar-warning" style="width: 100%;">
+            <span class="current-pf"></span> / <span class="total-pf">{{players['caio']['pf']}}</span>
+          </div>
+        </div>
+        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['caio']['pm']}}">
+        <input type="text" class="mp_change input-mini" placeholder="(+/-)">
+        <div class="progress mp">
+          <div class="mp_bar bar" style="width: 100%;">
+            <span class="current-mp"></span> / <span class="total-mp">{{players['caio']['pm']}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="span2" style="border: 1px solid gray; padding: 10px">
+        Elder <br />
+        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['elder']['hp']}}">
+        <input type="text" class="hp_change input-mini" placeholder="(+/-)">
+        <div class="progress hp">
+          <div class="hp_bar bar bar-success" style="width: 100%;">
+            <span class="current-hp"></span> / <span class="total-hp">{{players['elder']['hp']}}</span>
+          </div>
+        </div>
+        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['elder']['pf']}}">
+        <input type="text" class="pf_change input-mini" placeholder="(+/-)">
+        <div class="progress pf">
+          <div class="pf_bar bar bar-warning" style="width: 100%;">
+            <span class="current-pf"></span> / <span class="total-pf">{{players['elder']['pf']}}</span>
+          </div>
+        </div>
+        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['elder']['pm']}}">
+        <input type="text" class="mp_change input-mini" placeholder="(+/-)">
+        <div class="progress mp">
+          <div class="mp_bar bar" style="width: 100%;">
+            <span class="current-mp"></span> / <span class="total-mp">{{players['elder']['pm']}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="span2" style="border: 1px solid gray; padding: 10px">
+        Max <br />
+        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['max']['hp']}}">
+        <input type="text" class="hp_change input-mini" placeholder="(+/-)">
+        <div class="progress hp">
+          <div class="hp_bar bar bar-success" style="width: 100%;">
+            <span class="current-hp"></span> / <span class="total-hp">{{players['max']['hp']}}</span>
+          </div>
+        </div>
+        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['max']['pf']}}">
+        <input type="text" class="pf_change input-mini" placeholder="(+/-)">
+        <div class="progress pf">
+          <div class="pf_bar bar bar-warning" style="width: 100%;">
+            <span class="current-pf"></span> / <span class="total-pf">{{players['max']['pf']}}</span>
+          </div>
+        </div>
+        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['max']['pm']}}">
+        <input type="text" class="mp_change input-mini" placeholder="(+/-)">
+        <div class="progress mp">
+          <div class="mp_bar bar" style="width: 100%;">
+            <span class="current-mp"></span> / <span class="total-mp">{{players['max']['pm']}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="span2" style="border: 1px solid gray; padding: 10px">
+        Studart <br />
+        <input type="text" class="total_hp input-mini" placeholder="HP" value="{{players['studart']['hp']}}">
+        <input type="text" class="hp_change input-mini" placeholder="(+/-)">
+        <div class="progress hp">
+          <div class="hp_bar bar bar-success" style="width: 100%;">
+            <span class="current-hp"></span> / <span class="total-hp">{{players['studart']['hp']}}</span>
+          </div>
+        </div>
+        <input type="text" class="total_pf input-mini" placeholder="PF" value="{{players['studart']['pf']}}">
+        <input type="text" class="pf_change input-mini" placeholder="(+/-)">
+        <div class="progress pf">
+          <div class="pf_bar bar bar-warning" style="width: 100%;">
+            <span class="current-pf"></span> / <span class="total-pf">{{players['studart']['pf']}}</span>
+          </div>
+        </div>
+        <input type="text" class="total_mp input-mini" placeholder="MP" value="{{players['studart']['pm']}}">
+        <input type="text" class="mp_change input-mini" placeholder="(+/-)">
+        <div class="progress mp">
+          <div class="mp_bar bar" style="width: 100%;">
+            <span class="current-mp"></span> / <span class="total-mp">{{players['studart']['pm']}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <footer>
+      <p>Dregon RPG © Nicholas Bastos 2013</p>
+      <p>Dragon System © Maximiliano Guerra de Medeiros 2013</p>
+    </footer>
+  </div>
+
+  <script src="static/js/jquery.js"></script>
+  <script src="static/js/bootstrap.js"></script>
+  <script src="static/js/system.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      // Colocar calculo de absorção de dano
+      // Colocar o dano normal + automatico, e defesa normal + automatica, e diz quanto foi o dano final
+      $(".total_hp").change(function(event) {
+        var parent = $(event.currentTarget).parent();
+        var target = event.currentTarget;
+        var value = target.value;
+        var hpBar = parent.find(".hp_bar");
+        hpBar.find(".current-hp").text(value);
+        hpBar.find(".total-hp").text(value);
+      });
+
+      $(".hp_change").change(function(event) {
+        var parent = $(event.currentTarget).parent();
+        var change = parseInt(event.currentTarget.value, 10);
+        if (isNaN(change)) {
+          return;
+        }
+        var currentHp = parseInt(parent.find(".current-hp").text(), 10);
+        var totalHp = parseInt(parent.find(".total-hp").text(), 10);
+
+        var newHp = currentHp + change;
+        parent.find(".current-hp").text(newHp);
+
+        var percent = ((newHp / totalHp) * 100).toFixed(0);
+        if (percent < 20) {
+          parent.find(".hp_bar").removeClass("bar-success");
+          parent.find(".hp_bar").addClass("bar-danger");
+        } else {
+          parent.find(".hp_bar").removeClass("bar-danger");
+          parent.find(".hp_bar").addClass("bar-success");
+        }
+        parent.find(".hp_bar").css("width", percent + "%");
+      });
+
+      $(".total_pf").change(function(event) {
+        var parent = $(event.currentTarget).parent();
+        var target = event.currentTarget;
+        var value = target.value;
+        var pfBar = parent.find(".pf_bar");
+        pfBar.find(".current-pf").text(value);
+        pfBar.find(".total-pf").text(value);
+      });
+
+      $(".pf_change").change(function(event) {
+        var parent = $(event.currentTarget).parent();
+        var change = parseInt(event.currentTarget.value, 10);
+        if (isNaN(change)) {
+          return;
+        }
+        var currentPf = parseInt(parent.find(".current-pf").text(), 10);
+        var totalPf = parseInt(parent.find(".total-pf").text(), 10);
+
+        var newPf = currentPf + change;
+        parent.find(".current-pf").text(newPf);
+
+        var percent = ((newPf / totalPf) * 100).toFixed(0);
+        parent.find(".pf_bar").css("width", percent + "%");
+      });
+
+      $(".total_mp").change(function(event) {
+        var parent = $(event.currentTarget).parent();
+        var target = event.currentTarget;
+        var value = target.value;
+        var mpBar = parent.find(".mp_bar");
+        mpBar.find(".current-mp").text(value);
+        mpBar.find(".total-mp").text(value);
+      });
+
+      $(".mp_change").change(function(event) {
+        var parent = $(event.currentTarget).parent();
+        var change = parseInt(event.currentTarget.value, 10);
+        if (isNaN(change)) {
+          return;
+        }
+        var currentPm = parseInt(parent.find(".current-mp").text(), 10);
+        var totalPm = parseInt(parent.find(".total-mp").text(), 10);
+
+        var newPm = currentPm + change;
+        parent.find(".current-mp").text(newPm);
+
+        var percent = ((newPm / totalPm) * 100).toFixed(0);
+        parent.find(".mp_bar").css("width", percent + "%");
+      });
+
+
+    });
+  </script>
+</body>
+</html>
