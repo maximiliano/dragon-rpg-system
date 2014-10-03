@@ -1,3 +1,4 @@
+import sys
 from pyramid.config import Configurator
 from pyramid.response import Response
 from pyramid.view import view_config
@@ -30,7 +31,10 @@ def create_app():
     return config.make_wsgi_app()
 
 
-
 if __name__ == '__main__':
     app = create_app()
-    serve(app, host="0.0.0.0", port=5000)
+    try:
+        port = sys.argv[1]
+    except IndexError:
+        port = 8080
+    serve(app, host="0.0.0.0", port=port)
