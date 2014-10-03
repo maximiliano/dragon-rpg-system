@@ -13,7 +13,7 @@ players = {
     'max': dict(max_hp=44, max_pf=36, max_pm=12,
                 current_hp=44, current_pf=36, current_pm=12),
     'studart': dict(max_hp=45, max_pf=24, max_pm=20,
-                    current_hp=50, current_pf=20, current_pm=20)
+                    current_hp=45, current_pf=24, current_pm=20)
 }
 
 
