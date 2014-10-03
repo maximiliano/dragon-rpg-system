@@ -4,9 +4,6 @@ MarkupSafe==0.23
 PasteDeploy==1.5.2
 Pygments==1.6
 WebOb==1.4
-coverage==3.7.1
--e hg+@38c924fac635040dc4769a09a4af7465e7d76271#egg=dragon_system-dev
-nose==1.3.4
 pyramid==1.5.1
 pyramid-debugtoolbar==2.2
 pyramid-jinja2==2.3.3
